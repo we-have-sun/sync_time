@@ -18,14 +18,14 @@ struct TodoRowView: View {
                     .onChange(of: todo.text) {
                         try? viewContext.save()
                     }
-                Text("\(todo.timestamp, formatter: itemFormatter)")
+                Text("\(todo.timeStart ?? Date(),formatter: itemFormatter)")
                     .font(.caption)
                 
             }
             Spacer()
-            Image(systemName: todo.isDone ? "checkmark" : "circle")
+            Image(systemName: todo.isPlaying ? "pause" : "play")
                 .onTapGesture {
-                    todo.isDone.toggle()
+                    todo.isPlaying.toggle()
                     try? viewContext.save()
                 }
         }
@@ -37,7 +37,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Todo.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Todo.timeStart, ascending: true)],
         animation: .default)
     private var todos: FetchedResults<Todo>
 
@@ -68,9 +68,9 @@ struct ContentView: View {
     private func addTodo() {
         withAnimation {
             let todo = Todo(context: viewContext)
-            todo.timestamp = Date()
+            todo.timeStart = Date()
             todo.text = ""
-            todo.isDone = false
+            todo.isPlaying = false
             try? viewContext.save()
 
         }

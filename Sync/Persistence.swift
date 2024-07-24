@@ -15,9 +15,9 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         for index in 0..<5 {
             let todo = Todo(context: viewContext)
-            todo.timestamp = Date()
+            todo.timeStart = Date()
             todo.text = "Todo item # \(index)"
-            todo.isDone = false
+            todo.isPlaying = false
         }
         do {
             try viewContext.save()

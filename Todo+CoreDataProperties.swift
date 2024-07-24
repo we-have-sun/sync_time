@@ -17,8 +17,8 @@ extension Todo {
     }
 
     @NSManaged public var text: String
-    @NSManaged public var isDone: Bool
-    @NSManaged public var timestamp: Date
+    @NSManaged public var isPlaying: Bool
+    @NSManaged public var timeStart: Date?
 
 }
 
