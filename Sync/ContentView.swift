@@ -8,25 +8,46 @@
 import SwiftUI
 import CoreData
 
+struct TodoRowView: View {
+    @ObservedObject var todo: Todo
+    @Environment(\.managedObjectContext) private var viewContext
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                TextField("Todo", text: $todo.text)
+                    .onChange(of: todo.text) {
+                        try? viewContext.save()
+                    }
+                Text("\(todo.timestamp, formatter: itemFormatter)")
+                    .font(.caption)
+                
+            }
+            Spacer()
+            Image(systemName: todo.isDone ? "checkmark" : "circle")
+                .onTapGesture {
+                    todo.isDone.toggle()
+                    try? viewContext.save()
+                }
+        }
+    }
+}
+
+
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Todo.timestamp, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var todos: FetchedResults<Todo>
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
+                ForEach(todos) { todo in
+                    TodoRowView(todo: todo)
                 }
-                .onDelete(perform: deleteItems)
+                .onDelete(perform: deleteTodo)
             }
             .toolbar {
 #if os(iOS)
@@ -35,43 +56,31 @@ struct ContentView: View {
                 }
 #endif
                 ToolbarItem {
-                    Button(action: addItem) {
+                    Button(action: addTodo) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
             }
-            Text("Select an item")
+            .navigationTitle("Todo CoreData")
         }
     }
 
-    private func addItem() {
+    private func addTodo() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let todo = Todo(context: viewContext)
+            todo.timestamp = Date()
+            todo.text = ""
+            todo.isDone = false
+            try? viewContext.save()
 
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteTodo(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            offsets.map { todos[$0] }.forEach(viewContext.delete)
+            try? viewContext.save()
+            
         }
     }
 }

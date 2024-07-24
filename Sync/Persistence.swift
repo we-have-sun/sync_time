@@ -13,9 +13,11 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+        for index in 0..<5 {
+            let todo = Todo(context: viewContext)
+            todo.timestamp = Date()
+            todo.text = "Todo item # \(index)"
+            todo.isDone = false
         }
         do {
             try viewContext.save()
@@ -28,13 +30,14 @@ struct PersistenceController {
         return result
     }()
 
-    let container: NSPersistentContainer
+    let container: NSPersistentCloudKitContainer // this line 1
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "Sync")
+        container = NSPersistentCloudKitContainer(name: "Sync")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
+        container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
