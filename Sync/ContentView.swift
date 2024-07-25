@@ -8,26 +8,26 @@
 import SwiftUI
 import CoreData
 
-struct TodoRowView: View {
-    @ObservedObject var todo: Todo
+struct ProjectRowView: View {
+    @ObservedObject var project: Project
     @Environment(\.managedObjectContext) private var viewContext
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                TextField("Todo", text: $todo.text)
-                    .onChange(of: todo.text) {
+                TextField("Project", text: $project.name)
+                    .onChange(of: project.name) {
                         try? viewContext.save()
                     }
-                Text("\(todo.timeStart ?? Date(),formatter: itemFormatter)")
+                Text("Created: \(project.creationDate ?? Date(),formatter: itemFormatter)")
                     .font(.caption)
                 
             }
             Spacer()
-            Image(systemName: todo.isPlaying ? "pause" : "play")
-                .onTapGesture {
-                    todo.isPlaying.toggle()
-                    try? viewContext.save()
-                }
+//            Image(systemName: todo.isPlaying ? "pause" : "play")
+//                .onTapGesture {
+//                    todo.isPlaying.toggle()
+//                    try? viewContext.save()
+//                }
         }
     }
 }
@@ -37,17 +37,17 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Todo.timeStart, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Project.creationDate, ascending: true)],
         animation: .default)
-    private var todos: FetchedResults<Todo>
+    private var projects: FetchedResults<Project>
 
     var body: some View {
         NavigationStack {
             List {
-                ForEach(todos) { todo in
-                    TodoRowView(todo: todo)
+                ForEach(projects) { project in
+                    ProjectRowView(project: project)
                 }
-                .onDelete(perform: deleteTodo)
+                .onDelete(perform: deleteProject)
             }
             .toolbar {
 #if os(iOS)
@@ -56,29 +56,28 @@ struct ContentView: View {
                 }
 #endif
                 ToolbarItem {
-                    Button(action: addTodo) {
+                    Button(action: addProject) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
             }
-            .navigationTitle("Todo CoreData")
+            .navigationTitle("Projects")
         }
     }
 
-    private func addTodo() {
+    private func addProject() {
         withAnimation {
-            let todo = Todo(context: viewContext)
-            todo.timeStart = Date()
-            todo.text = ""
-            todo.isPlaying = false
+            let project = Project(context: viewContext)
+            project.creationDate = Date()
+            project.name = ""
             try? viewContext.save()
 
         }
     }
 
-    private func deleteTodo(offsets: IndexSet) {
+    private func deleteProject(offsets: IndexSet) {
         withAnimation {
-            offsets.map { todos[$0] }.forEach(viewContext.delete)
+            offsets.map { projects[$0] }.forEach(viewContext.delete)
             try? viewContext.save()
             
         }

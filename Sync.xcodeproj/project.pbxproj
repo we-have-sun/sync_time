@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6743F1BC2C528D7F00F292B1 /* Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6743F1B82C528D7F00F292B1 /* Time+CoreDataClass.swift */; };
+		6743F1BD2C528D7F00F292B1 /* Time+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6743F1B92C528D7F00F292B1 /* Time+CoreDataProperties.swift */; };
+		6743F1BE2C528D7F00F292B1 /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6743F1BA2C528D7F00F292B1 /* Project+CoreDataClass.swift */; };
+		6743F1BF2C528D7F00F292B1 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6743F1BB2C528D7F00F292B1 /* Project+CoreDataProperties.swift */; };
+		6793664F2C52BCE000B5E44F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6793664E2C52BCE000B5E44F /* CloudKit.framework */; };
 		6795442F2C503DA900046EA4 /* SyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6795442E2C503DA900046EA4 /* SyncApp.swift */; };
 		679544312C503DA900046EA4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679544302C503DA900046EA4 /* Persistence.swift */; };
 		679544342C503DA900046EA4 /* Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 679544322C503DA900046EA4 /* Sync.xcdatamodeld */; };
@@ -18,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6743F1B82C528D7F00F292B1 /* Time+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Time+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6743F1B92C528D7F00F292B1 /* Time+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Time+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6743F1BA2C528D7F00F292B1 /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6743F1BB2C528D7F00F292B1 /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6793664E2C52BCE000B5E44F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		6795442B2C503DA900046EA4 /* Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6795442E2C503DA900046EA4 /* SyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncApp.swift; sourceTree = "<group>"; };
 		679544302C503DA900046EA4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -28,7 +38,7 @@
 		6795443B2C503DAB00046EA4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		679544422C503F0200046EA4 /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		679544432C503F0200046EA4 /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		67FD040C2C519FFA002942F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		67FD040C2C519FFA002942F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,19 +46,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6793664F2C52BCE000B5E44F /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6793664D2C52BCE000B5E44F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6793664E2C52BCE000B5E44F /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		679544222C503DA900046EA4 = {
 			isa = PBXGroup;
 			children = (
+				6743F1B82C528D7F00F292B1 /* Time+CoreDataClass.swift */,
+				6743F1B92C528D7F00F292B1 /* Time+CoreDataProperties.swift */,
+				6743F1BA2C528D7F00F292B1 /* Project+CoreDataClass.swift */,
+				6743F1BB2C528D7F00F292B1 /* Project+CoreDataProperties.swift */,
 				679544422C503F0200046EA4 /* Todo+CoreDataClass.swift */,
 				679544432C503F0200046EA4 /* Todo+CoreDataProperties.swift */,
 				6795442D2C503DA900046EA4 /* Sync */,
 				6795442C2C503DA900046EA4 /* Products */,
+				6793664D2C52BCE000B5E44F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +177,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6743F1BC2C528D7F00F292B1 /* Time+CoreDataClass.swift in Sources */,
+				6743F1BD2C528D7F00F292B1 /* Time+CoreDataProperties.swift in Sources */,
+				6743F1BE2C528D7F00F292B1 /* Project+CoreDataClass.swift in Sources */,
+				6743F1BF2C528D7F00F292B1 /* Project+CoreDataProperties.swift in Sources */,
 				679544342C503DA900046EA4 /* Sync.xcdatamodeld in Sources */,
 				6795442F2C503DA900046EA4 /* SyncApp.swift in Sources */,
 				679544362C503DA900046EA4 /* ContentView.swift in Sources */,
@@ -293,6 +321,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sync/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -307,7 +336,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wehavesun.sync.Sync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -332,6 +361,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sync/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -346,7 +376,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wehavesun.sync.Sync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
