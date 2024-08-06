@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 @objc(Time)
-public class Time: NSManagedObject {
-
+public class Time: NSManagedObject, Identifiable {
+    
+    
 }

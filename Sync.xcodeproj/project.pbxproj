@@ -11,7 +11,7 @@
 		6743F1BD2C528D7F00F292B1 /* Time+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6743F1B92C528D7F00F292B1 /* Time+CoreDataProperties.swift */; };
 		6743F1BE2C528D7F00F292B1 /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6743F1BA2C528D7F00F292B1 /* Project+CoreDataClass.swift */; };
 		6743F1BF2C528D7F00F292B1 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6743F1BB2C528D7F00F292B1 /* Project+CoreDataProperties.swift */; };
-		6793664F2C52BCE000B5E44F /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6793664E2C52BCE000B5E44F /* CloudKit.framework */; };
+		676C977C2C625DB60018B53E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676C977B2C625DB60018B53E /* CloudKit.framework */; };
 		6795442F2C503DA900046EA4 /* SyncApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6795442E2C503DA900046EA4 /* SyncApp.swift */; };
 		679544312C503DA900046EA4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679544302C503DA900046EA4 /* Persistence.swift */; };
 		679544342C503DA900046EA4 /* Sync.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 679544322C503DA900046EA4 /* Sync.xcdatamodeld */; };
@@ -27,7 +27,7 @@
 		6743F1B92C528D7F00F292B1 /* Time+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Time+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6743F1BA2C528D7F00F292B1 /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6743F1BB2C528D7F00F292B1 /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		6793664E2C52BCE000B5E44F /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		676C977B2C625DB60018B53E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		6795442B2C503DA900046EA4 /* Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6795442E2C503DA900046EA4 /* SyncApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncApp.swift; sourceTree = "<group>"; };
 		679544302C503DA900046EA4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6793664F2C52BCE000B5E44F /* CloudKit.framework in Frameworks */,
+				676C977C2C625DB60018B53E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +56,7 @@
 		6793664D2C52BCE000B5E44F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6793664E2C52BCE000B5E44F /* CloudKit.framework */,
+				676C977B2C625DB60018B53E /* CloudKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,7 +135,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					6795442A2C503DA900046EA4 = {
 						CreatedOnToolsVersion = 15.4;
@@ -227,6 +227,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -288,6 +289,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -315,6 +317,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sync/Sync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sync/Preview Content\"";
 				DEVELOPMENT_TEAM = 7DKPSXJRS9;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -332,10 +335,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wehavesun.sync.Sync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,6 +358,7 @@
 				CODE_SIGN_ENTITLEMENTS = Sync/Sync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Sync/Preview Content\"";
 				DEVELOPMENT_TEAM = 7DKPSXJRS9;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -372,10 +376,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wehavesun.sync.Sync;
 				PRODUCT_NAME = "$(TARGET_NAME)";

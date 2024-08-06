@@ -23,6 +23,3 @@ extension Time {
 
 }
 
-extension Time : Identifiable {
-
-}

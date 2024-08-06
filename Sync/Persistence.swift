@@ -16,6 +16,15 @@ struct PersistenceController {
         for index in 0..<5 {
             let randomNumber = Int.random(in: -4_000_010 ... 0)
             let someDateTime = Date(timeIntervalSinceNow: Double(randomNumber))
+            let durationAdded = Int.random(in: 10000 ... 60000)
+            
+            let time = Time(context: viewContext)
+            time.startDate = Date(timeIntervalSinceNow: Double(durationAdded))
+            time.duration = 100_000
+            
+            let time2 = Time(context: viewContext)
+            time2.startDate = Date(timeIntervalSinceNow: Double(durationAdded))
+            time2.duration = 33_000
             
             let todo = Todo(context: viewContext)
             todo.timeStart = Date()
@@ -25,8 +34,22 @@ struct PersistenceController {
             let project = Project(context: viewContext)
             project.name = "Project # \(index)"
             project.creationDate = someDateTime
+            project.addToTimes(time)
+            project.addToTimes(time2)
             
         }
+        //adding a example data with not time recorded
+        let project2 = Project(context: viewContext)
+        project2.name = "Project no time"
+        project2.creationDate = Date()
+        
+        //adding a example data with running task
+        let project3 = Project(context: viewContext)
+        project3.name = "Project running"
+        project3.creationDate = Date()
+        let time = Time(context: viewContext)
+        time.startDate = Date(timeIntervalSinceNow: -2000)
+        project3.addToTimes(time)
         
         
         do {
